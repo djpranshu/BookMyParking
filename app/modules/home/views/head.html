@@ -1,0 +1,35 @@
+<div class="head">
+    <div  class="row user_operations">
+      <div class="nav_list col-xs-6">
+      <div class="row">
+        <div class="col-xs-1">
+         <a >
+            <i class="fa fa-home home-icon" aria-hidden="true"  ng-click="goHome('modules/home/views/parkings.html')" ></i>
+         </a>
+
+        </div>
+
+         <div class="col-xs-11">
+          <ul>
+          <li ng-repeat="v in views">
+            <button class="w3-button w3-teal nav_button" ng-click='loadPartial(v.url)'>{{v.name}}</button>
+          </li>
+        </ul>
+        </div>
+      </div>
+
+      </div>
+      <div class="btn-group col-xs-6 " dropdown is-open="status.isopen">
+        <div class="row profile_div">
+          <div class="col-xs-6 user_dropdown">
+            <select ng-model="template" ng-options="t.name for t in templates" ng-change = 'setinvisible(template.url)' class="w3-button w3-teal nav_button ">
+              <option value="">{{username}}</option>
+            </select>
+          </div>
+          <div class="col-xs-6 user_signout"> <a href="#/login" class="glyphicon glyphicon-log-out logout">Logout</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>

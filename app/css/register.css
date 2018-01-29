@@ -1,0 +1,93 @@
+.register-page{
+    
+         max-width:50%;
+         max-height:600px;
+         background-color: #282828;
+		text-align: center;
+         opacity: 0.8;
+         filter: alpha(opacity=50);
+         color: white;
+         right:10%;
+         top:10%;
+         margin: auto;
+         margin-top: 40px;
+         border-style: solid;
+      border-color: #696969;
+         
+}
+
+.register-page >input{
+
+}
+/*css for window resize*/
+ @media screen and (max-width: 699px) and (min-width: 200px) {
+
+   .register-page{
+      position: absolute;
+         width: 300px;
+         height:510px;
+         background-color: #282828;
+         z-index: 15;
+         top: 45%;
+         opacity: 0.8;
+         filter: alpha(opacity=50);
+         color: white;
+         left: 50%;
+         margin: -220px 0 0 -150px;
+         border-style: solid;
+      border-color: #696969;
+}
+
+.registerhead{
+   font-size-adjust: 0.58;
+}
+
+}
+
+/* cell phone Portrait and Landscape */
+ @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+     .register-page{
+      position: absolute;
+         width: 300px;
+         height:510px;
+         background-color: #282828;
+         z-index: 15;
+         top: 45%;
+         opacity: 0.8;
+         filter: alpha(opacity=50);
+         color: white;
+         left: 50%;
+         margin: -220px 0 0 -150px;
+         border-style: solid;
+      border-color: #696969;
+}
+}
+
+/* tabs and ipads Portrait and Landscape */
+ @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+     .register-page{
+      position: absolute;
+         width: 300px;
+         height:510px;
+         background-color: #282828;
+         z-index: 15;
+         top: 45%;
+         opacity: 0.8;
+         filter: alpha(opacity=50);
+         color: white;
+         left: 50%;
+         margin: -220px 0 0 -150px;
+         border-style: solid;
+      border-color: #696969;
+}
+}
+
+.registerhead{
+	text-align: center;
+	margin: auto;
+}
+
+
+
+ 
+
