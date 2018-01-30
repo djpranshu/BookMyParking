@@ -1,61 +1,24 @@
-<div class="booking_container">
+<div class="booking_container" ng-controller="ParkingController">
 	 <div class="panel panel-default past_booking">
 		    <div class="panel-heading panel_custom_heading">Bookings</div>
-		    <div class="panel-body panel_custom_body">
+		    <div class="panel-body panel_custom_body" ng-repeat="x in bookingData">
 		    	<div class="row booking_content">
 		    		<div class="col-xs-4">
-		    			<h2>24 Sept'18</h2>
+		    			<h2>{{x.bookingDate | date:'medium'}}</h2>
 		    		</div>
 		    		<div class="col-xs-4">
 		    			<h6>Address: </h6>
-		    			<div>Xoriant Solution pvt.ltd</div>
+		    			<div>{{x.bookingAddress}}</div>
 		    		</div>
-		    			
-		    		<div class="col-xs-4">
-		    			<h6><button class="button bookin_status_btn_green">Booked</button></h6>
-		    			
-		    			<div>Booked On: 23 sept'18</div>
-		    			<div>BookingID: X786DJKL</div>
-		    		</div>
-		    	</div>
-		    </div>
 
-		    <div class="panel-body panel_custom_body">
-		    	<div class="row booking_content">
 		    		<div class="col-xs-4">
-		    			<h2>24 Sept'18</h2>
-		    		</div>
-		    		<div class="col-xs-4">
-		    			<h6>Address: </h6>
-		    			<div>Pubmatic Solution pvt.ltd</div>
-		    		</div>
-		    			
-		    		<div class="col-xs-4">
-		    			<h6><button class="button bookin_status_btn_red">Parked</button></h6>
-		    			<div>Booked On: 23 sept'18</div>
-		    			<div>BookingID: X786DJKL</div>
-		    		</div>
-		    	</div>
-		    </div>
+		    			<h6><button class="button bookin_status_btn_green">{{x.bookingStatus}}</button></h6>
 
-		    <div class="panel-body panel_custom_body">
-		    	<div class="row booking_content">
-		    		<div class="col-xs-4">
-		    			<h2>24 Sept'18</h2>
-		    		</div>
-		    		<div class="col-xs-4">
-		    			<h6>Address: </h6>
-		    			<div>Xoriant Solution pvt.ltd</div>
-		    		</div>
-		    			
-		    		<div class="col-xs-4">
-		    			<h6><button class="button bookin_status_btn_red">Parked</button></h6>
-		    			<div>Booked On: 23 sept'18</div>
-		    			<div>BookingID: X786DJKL</div>
+		    			<div>Booked On: {{x.bookedOnDate}}</div>
+		    			<div>BookingID: {{x.bookingID}}</div>
 		    		</div>
 		    	</div>
 		    </div>
   	</div>
-  	 
- </div>
 
+ </div>

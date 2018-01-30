@@ -1,62 +1,62 @@
-<div class="settings_container">
+<div class="settings_container" ng-controller="SettingsController">
 	 <div class="panel panel-default user_setting_panel">
 		    <div class="panel-heading panel_custom_heading">Settings</div>
 		    <div class="panel-body custon_setting_body">
-		   	<form class="form-horizontal" role="form" method="post" action="#">
- 
+		   	<form class="form-horizontal" role="form"  ng-submit="updateUser()">
+
 <div class="form-group">
 <label for="firstName" class="col-sm-2 control-label">First Name:</label>
 <div class="col-sm-6">
-<input type="text" name="firstName" class="w3-input w3-border" id="firstName" placeholder="First Name">
+<input type="text" name="firstName" class="w3-input w3-border" ng-model ="firstName" id="firstName" placeholder="{{firstName}}">
 </div>
 </div>
- 
+
 <div class="form-group">
 <label for="lastName" class="col-sm-2 control-label">Last Name:</label>
 <div class="col-sm-6">
-<input type="text" name="lastName" class="w3-input w3-border" id="lastName" placeholder="Last Name">
+<input type="text" name="lastName" class="w3-input w3-border" ng-model ="lastName" id="lastName" placeholder="{{lastName}}">
 </div>
 </div>
- 
+
 <div class="form-group">
 <label for="" class="col-sm-2 control-label">Gender:</label>
 <div class="col-sm-6">
 <label class="radio-inline">
-<input type="radio" name="gender" id="gender1" value="male">Male
+<input type="radio" name="gender" id="gender1" ng-model ="gender" value="male">Male
 </label>
 <label class="radio-inline">
-<input type="radio" name="gender" id="gender2" value="female">Female
+<input type="radio" name="gender" id="gender2" ng-model ="gender" value="female">Female
 </label>
- 
+
 </div>
 </div>
- 
+
 <div class="form-group">
 <label for="dob" class="col-sm-2 control-label">DOB:</label>
 <div class="col-sm-6">
-<input type="date" name="bday" class="w3-input w3-border datepicker" id="dob" placeholder=" Date of Birth">
- 
+<input type="date" name="bday" class="w3-input w3-border datepicker" ng-model ="DOB" id="dob" placeholder=" Date of Birth">
+
 </div>
 </div>
- 
+
 <div class="form-group">
 <label for="userName" class="col-sm-2 control-label">User Name:</label>
 <div class="col-sm-6">
-<input type="email" name="userName" class="w3-input w3-border" id="userName" placeholder="User Name">
+<input type="test" name="userName" class="w3-input w3-border" ng-model ="userName" id="userName" placeholder="{{userName}}">
 </div>
 </div>
- 
 
- 
+
+
 <div class="form-group">
 <div class="col-sm-offset-2 col-sm-10">
-<button type="submit" class="btn btn-primary" id="register">Update</button>
+<button type="submit" class="btn btn-primary" id="update">Update</button>
 </div>
 </div>
- 
+
 </form>
 		    </div>
   	</div>
-  	 
+
 
 </div>

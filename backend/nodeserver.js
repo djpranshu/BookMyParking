@@ -1,7 +1,8 @@
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
-var mongoOp = require("./models/mongo");
+var booking = require("./models/booking");
+var user = require("./models/user");
 var router = express.Router();
 
 app.use(bodyParser.json());
@@ -23,7 +24,7 @@ router.get("/", function(req, res) {
 router.route("/users")
     .get(function(req, res) {
         var response = {};
-        mongoOp.find({}, function(err, data) {
+        user.find({}, function(err, data) {
             // Mongo command to fetch all data from collection.
             if (err) {
                 response = {
@@ -40,7 +41,7 @@ router.route("/users")
         });
     })
     .post(function(req, res) {
-        var db = new mongoOp();
+        var db = new user();
         var response = {};
 
         var userPassword = require('crypto')
@@ -48,11 +49,12 @@ router.route("/users")
             .update(req.body.password)
             .digest('base64');
 
-        mongoOp.find({
+        user.find({
             "userEmail": req.body.email,
             "userPassword": userPassword
         }, function(err, data) {
             // Mongo command to fetch all data from collection.
+            console.log("data:::::",data);
             if (err) {
                 response = {
                     "error": true,
@@ -84,7 +86,7 @@ router.route("/addusers")
 
     })
     .post(function(req, res) {
-        var db = new mongoOp();
+        var db = new user();
         var response = {};
         // fetch email and password from REST request.
         // Add strict validation when you use this in Production.
@@ -98,7 +100,7 @@ router.route("/addusers")
             .update(req.body.password)
             .digest('base64');
 
-        mongoOp.find({
+        user.find({
             "userEmail": req.body.email
         }, function(err, data) {
             // Mongo command to fetch all data from collection.
@@ -134,11 +136,68 @@ router.route("/addusers")
                     });
                 }
             }
+        });
+    });
+
+    router.route("/getParkings")
+        .post(function(req, res) {
+          var bookingId = req.body.bookingid;
+          booking.find({"bookingID": bookingId}, function(err, data) {
+              // Mongo command to fetch all data from collection.
+              if (err) {
+                  response = {
+                      "error": true,
+                      "message": "Error fetching data"
+                  };
+              } else if(data.length != 0) {
+                  response = {
+                      "error": false,
+                      "message": data,
+                      "success":true
+                  };
+              }else{
+                response = {
+                    "error": false,
+                    "message": data,
+                    "success":false
+                };
+              }
+              res.json(response);
+          });
+        })
+
+    router.route("/bookParking")
+        .post(function(req, res,data) {
+            var db = new user();
+            var response = {};
+
+                db.userEmail = req.body.email;
+                db.bookingDate = req.body.bookingdate;
+                db.bookingAddress = req.body.bookingaddress;
+                db.bookingStatus = req.body.bookingstatus;
+                db.bookingID = req.body.bookingid;
+                db.bookedOnDate = req.body.bookedondate;
+
+                db.save(function(err) {
+                    // save() will run insert() command of MongoDB.
+                    // it will add new data in collection.
+                    if (err) {
+                        response = {
+                            "error": true,
+                            "message": "Error adding data"
+                        };
+                    } else {
+                        response = {
+                            "error": false,
+                            "message": "Successfully added!"
+                        };
+                    }
+                    res.json(response);
+                });
+
+
 
         });
-
-
-    });
 
 app.use('/', router);
 

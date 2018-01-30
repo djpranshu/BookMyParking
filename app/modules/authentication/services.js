@@ -63,6 +63,11 @@ angular.module('Authentication')
             }, 1000);
         };
 
+        service.getLoggedinUser = function (callback) {
+            var globles = $cookieStore.get('globals', $rootScope.globals);
+            callback(globles);
+        };
+
         service.RecoverPassword = function (email, callback) {
 
                 /* Use this for real authentication
@@ -71,6 +76,23 @@ angular.module('Authentication')
             //    .success(function (response) {
             //        callback(response);
             //    });
+        };
+
+        service.Parking = function (bookingId, callback) {
+
+             console.log("bookingId:::::",bookingId);
+            $timeout(function(){
+            $http.post('http://127.0.0.1:3000/getParkings', { "bookingid": bookingId })
+                .success(function (response) {
+
+                  if(!response.success) {
+
+                      response.message = 'No such Parking Avilable';
+                  }
+                  callback(response);
+               });
+            }, 1000);
+
         };
 
         return service;

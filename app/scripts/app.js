@@ -10,6 +10,7 @@ angular.module('Profile',[]);
 angular.module('Booking',[]);
 angular.module('Parking',[]);
 angular.module('Profile',[]);
+angular.module('Settings',[]);
 
 
 
@@ -25,10 +26,11 @@ var app = angular.module('smartManufacturingApp', [
     'Profile',
     'Booking',
     'Parking',
-    'Profile'
-    
+    'Profile',
+    'Settings'
+
 ])
- 
+
 app.config(['$routeProvider', function ($routeProvider) {
 
     $routeProvider
@@ -68,10 +70,10 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'modules/home/views/parkings.html',
             ideMenus: true
         })
-         
+
         .otherwise({ redirectTo: '/login' });
-}]) 
- 
+}])
+
 app.run(['$rootScope', '$location', '$cookieStore', '$http',
     function ($rootScope, $location, $cookieStore, $http) {
         // keep user logged in after page refresh
@@ -79,12 +81,12 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http',
         if ($rootScope.globals.currentUser) {
             $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
         }
- 
+
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
             // redirect to login page if not logged in
 
             if ($location.path() !== '/login' && !$rootScope.globals.currentUser) {
-                
+
                 if($location.path() == '/register' && !$rootScope.globals.currentUser){
                      $location.path('/register');
                 }else if($location.path() == '/forgetpassword' && !$rootScope.globals.currentUser){
@@ -92,15 +94,10 @@ app.run(['$rootScope', '$location', '$cookieStore', '$http',
                 }else{
                      $location.path('/login');
                 }
-               
+
             }
 
 
- 
+
         });
     }]);
-
-
-
-
-
